@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8" />
-<title>Opening App...</title>
-<script>
-    const websiteUrl = "https://bizzbrains.com/junior";
+  <meta charset="UTF-8" />
+  <title>Opening App...</title>
+  <script>
+    const params = window.location.search; // e.g. ?plan_id=1&tab=1
+    const appUrl = "https://vrunda-anques.github.io/" + params;
+    const fallbackUrl = "https://play.google.com/store/apps/details?id=com.bizzbrains.junior";
+
+    window.location.href = "intent://vrunda-anques.github.io/" + params +
+      "#Intent;scheme=https;package=com.bizzbrains.junior;S.browser_fallback_url=" +
+      encodeURIComponent(fallbackUrl) + ";end";
+
     setTimeout(() => {
-      window.location.href = websiteUrl;
-    }, 500);
-</script>
+      window.location.href = fallbackUrl;
+    }, 2000);
+  </script>
 </head>
 <body>
-<p>Opening app… If nothing happens, redirecting to Play Store.</p>
+  <p>Opening app…</p>
 </body>
 </html>
